@@ -20,11 +20,13 @@ def create_app():
     from routes.cart import cart_bp
     from routes.orders import orders_bp
     from routes.admin import admin_bp
+    from routes.works import works_bp
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(catalog_bp, url_prefix="/api/catalog")
     app.register_blueprint(cart_bp, url_prefix="/api/cart")
     app.register_blueprint(orders_bp, url_prefix="/api/orders")
     app.register_blueprint(admin_bp, url_prefix="/api/admin")
+    app.register_blueprint(works_bp, url_prefix="/api")
 
     # создать БД если не существует
     with app.app_context():
@@ -34,4 +36,5 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(debug=True, port=port)
