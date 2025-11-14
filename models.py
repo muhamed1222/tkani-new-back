@@ -11,11 +11,12 @@ class User(db.Model):
     email = db.Column(db.String(200), unique=True, nullable=False, index=True)
     password_hash = db.Column(db.String(200), nullable=False)
     avatar = db.Column(db.String(300))  # путь к файлу в static/avatars
+    role = db.Column(db.String(20), default="user")  # user, admin
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     orders = db.relationship("Order", backref="user", lazy=True)
 
     def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password, method='pbkdf2:sha256')
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)

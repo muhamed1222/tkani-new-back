@@ -19,10 +19,12 @@ def create_app():
     from routes.catalog import catalog_bp
     from routes.cart import cart_bp
     from routes.orders import orders_bp
+    from routes.admin import admin_bp
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(catalog_bp, url_prefix="/api/catalog")
     app.register_blueprint(cart_bp, url_prefix="/api/cart")
     app.register_blueprint(orders_bp, url_prefix="/api/orders")
+    app.register_blueprint(admin_bp, url_prefix="/api/admin")
 
     # создать БД если не существует
     with app.app_context():
