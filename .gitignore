@@ -1,12 +1,51 @@
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+.Python
 *.swp
+*.swo
+*~
 
+# Virtual Environment
 venv/
+.venv/
+env/
+ENV/
 
+# Database
+*.db
+*.sqlite
+*.sqlite3
 app.db
-*sqlite3
 
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# Static files (загруженные пользователями)
 static/avatars/*
+!static/avatars/.gitkeep
+static/products/*
+!static/products/.gitkeep
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
